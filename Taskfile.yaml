@@ -1,0 +1,22 @@
+version: 3
+
+tasks:
+  generate:
+    desc: Generate tofu configuration
+    cmds:
+      - terramate generate
+
+  init:
+    desc: Run tofu init
+    cmds:
+      - terramate run --parallel 1 --changed -- tofu init
+
+  plan:
+    desc: Run tofu plan
+    cmds:
+      - terramate run --parallel 5 --changed -- tofu plan -out out.tfplan
+
+  apply:
+    desc: Run tofu plan
+    cmds:
+      - terramate run --parallel 5 --changed -- tofu apply -input=false -auto-approve -lock-timeout=5m out.tfplan # respects after = [...] ordering

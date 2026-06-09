@@ -89,10 +89,10 @@ Cross-stack outputs use Terramate's [outputs sharing](https://terramate.io/docs/
 ## Workflow
 
 ```sh
-terramate generate # write backend.tf + sharing files into stacks
-terramate run --parallel 1 --changed -- tofu init
-terramate run --parallel 5 --changed -- tofu plan -out out.tfplan
-terramate run --parallel 5 --changed -- tofu apply -input=false -auto-approve -lock-timeout=5m out.tfplan # respects after = [...] ordering
+task generate
+task init
+task plan
+task apply
 ```
 
 Scope a run to one stack with `terramate run --chdir dev/central-us/hub/dns -- tofu plan`.
