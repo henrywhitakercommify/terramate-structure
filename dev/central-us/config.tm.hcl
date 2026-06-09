@@ -2,6 +2,8 @@ globals {
   backend_bucket         = "REPLACE_ME"
   backend_region         = "centralus"
   backend_dynamodb_table = "REPLACE_ME"
+
+  azure_region = "centralus"
 }
 
 generate_hcl "backend.tf" {
